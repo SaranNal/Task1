@@ -1,0 +1,13 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.8
+  build:
+    commands:
+      - docker build -t your-ecr-repo:latest .
+  post_build:
+    commands:
+      - $(aws ecr get-login --no-include-email --region your-region)
+      - docker push your-ecr-repo:latest
