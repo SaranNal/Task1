@@ -12,6 +12,6 @@ phases:
   build:
     commands:
       - echo "Building Docker image..."
-      - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/v9g5c6v3
+      - aws ecr-public get-login-password --region us-east-1 docker login --username AWS --password-stdin public.ecr.aws/v9g5c6v3
       - docker tag hello-world:latest public.ecr.aws/v9g5c6v3/hello-world:latest
       - docker push public.ecr.aws/v9g5c6v3/hello-world:latest
