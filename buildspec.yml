@@ -3,7 +3,7 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION) # Login to ECR
+      - $(aws ecr get-login --no-include-email --region us-east-1) # Login to ECR
   build:
     commands:
       - docker build -t hello-world .  # Replace 'your-image-name' with your desired image name
