@@ -1,16 +1,15 @@
 version: 0.2
 
 phases:
-  install:
-    runtime-versions:
-      python: 3.11
-
   pre_build:
     commands:
       - echo "Logging in to Amazon ECR..."
+      - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/v9g5c6v3
 
   build:
     commands:
       - echo "Building Docker image..."
+      - docker build -t hello-world .
       - docker tag hello-world:latest public.ecr.aws/v9g5c6v3/hello-world:latest
+      - echo "Pushing Docker image to ECR..."
       - docker push public.ecr.aws/v9g5c6v3/hello-world:latest
