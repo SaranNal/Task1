@@ -9,5 +9,5 @@ phases:
   build:
     commands:
       - echo Building Docker image...
-      - docker build -t $ECR_REGISTRY_URL/hello-world:latest .
+      - docker tag hello-world:latest public.ecr.aws/v9g5c6v3/hello-world:latest
       - docker push public.ecr.aws/v9g5c6v3/hello-world:latest
